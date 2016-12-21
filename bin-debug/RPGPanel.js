@@ -19,6 +19,12 @@ var UserPanel = (function (_super) {
         this.heroText.x = 100;
         this.heroText.y = 800;
         this.heroText.size = 20;
+        this.heroPicture = new egret.Bitmap();
+        this.heroPicture.width = 350;
+        this.heroPicture.height = 500;
+        this.addChild(this.heroPicture);
+        this.heroPicture.x = 100;
+        this.heroPicture.y = 200;
         this.axeIcon = new egret.Bitmap();
         this.axeIcon.width = 80;
         this.axeIcon.height = 80;
@@ -27,7 +33,7 @@ var UserPanel = (function (_super) {
         this.axeIcon.y = this.height / 8;
         this.axeIcon.touchEnabled = true;
         this.axeIcon.addEventListener(egret.TouchEvent.TOUCH_BEGIN, function (e) {
-            _this.hero.equipments[0].getEquipmentInformations();
+            _this.hero.equipments[0].getEquipInfo();
             _this.equipPanel.printfEquip(_this.hero.equipments[0]);
             _this.equipPanel.alpha = 1;
         }, this);
@@ -39,7 +45,7 @@ var UserPanel = (function (_super) {
         this.helmetIcon.y = this.axeIcon.y + this.height / 6;
         this.helmetIcon.touchEnabled = true;
         this.helmetIcon.addEventListener(egret.TouchEvent.TOUCH_BEGIN, function (e) {
-            _this.hero.equipments[1].getEquipmentInformations();
+            _this.hero.equipments[1].getEquipInfo();
             _this.equipPanel.printfEquip(_this.hero.equipments[1]);
             _this.equipPanel.alpha = 1;
         }, this);
@@ -51,7 +57,7 @@ var UserPanel = (function (_super) {
         this.braceletIcon.y = this.helmetIcon.y + this.height / 7;
         this.braceletIcon.touchEnabled = true;
         this.braceletIcon.addEventListener(egret.TouchEvent.TOUCH_BEGIN, function (e) {
-            _this.hero.equipments[2].getEquipmentInformations();
+            _this.hero.equipments[2].getEquipInfo();
             _this.equipPanel.printfEquip(_this.hero.equipments[2]);
             _this.equipPanel.alpha = 1;
         }, this);
@@ -63,16 +69,10 @@ var UserPanel = (function (_super) {
         this.armorIcon.y = this.braceletIcon.y + this.height / 6;
         this.armorIcon.touchEnabled = true;
         this.armorIcon.addEventListener(egret.TouchEvent.TOUCH_BEGIN, function (e) {
-            _this.hero.equipments[3].getEquipmentInformations();
+            _this.hero.equipments[3].getEquipInfo();
             _this.equipPanel.printfEquip(_this.hero.equipments[3]);
             _this.equipPanel.alpha = 1;
         }, this);
-        this.heroPicture = new egret.Bitmap();
-        this.heroPicture.width = 350;
-        this.heroPicture.height = 500;
-        this.addChild(this.heroPicture);
-        this.heroPicture.x = 100;
-        this.heroPicture.y = 200;
         this.equipPanel = new EquipPanel();
         this.addChild(this.equipPanel);
         this.equipPanel.x = 350;
@@ -100,7 +100,6 @@ var UserPanel = (function (_super) {
         for (var i = 0; i < hero.properties.length; i++) {
             this.heroInfoText = this.heroInfoText + hero.properties[i].name + " : " + hero.properties[i].value.toFixed(0) + "\n";
         }
-        this.heroInfoText = this.heroInfoText + "战斗力 : " + hero.getFightPower().toFixed(0);
         this.heroText.text = this.heroInfoText;
     };
     p.createBitmapByName = function (name) {
@@ -131,13 +130,13 @@ var EquipPanel = (function (_super) {
         this.addChild(this.equipIcon);
         this.equipIcon.x = 30;
         this.equipIcon.y = 30;
-        this.nameField = new egret.TextField();
-        this.nameField.width = 200;
-        this.nameField.height = 50;
-        this.addChild(this.nameField);
-        this.nameField.size = 24;
-        this.nameField.x = 30;
-        this.nameField.y = this.equipIcon.y + this.equipIcon.height + 50;
+        this.nameText = new egret.TextField();
+        this.nameText.width = 200;
+        this.nameText.height = 50;
+        this.addChild(this.nameText);
+        this.nameText.size = 24;
+        this.nameText.x = 30;
+        this.nameText.y = this.equipIcon.y + this.equipIcon.height + 50;
         this.propertiesField = new egret.TextField();
         this.propertiesField.width = 200;
         this.propertiesField.height = 300;
@@ -145,11 +144,11 @@ var EquipPanel = (function (_super) {
         this.propertiesField.textColor = 0xffffff;
         this.propertiesField.size = 20;
         this.propertiesField.x = 30;
-        this.propertiesField.y = this.nameField.y + 55;
+        this.propertiesField.y = this.nameText.y + 55;
     }
     var d = __define,c=EquipPanel,p=c.prototype;
     p.printfEquip = function (equipment) {
-        this.nameField.text = equipment.name;
+        this.nameText.text = equipment.name;
         this.equipIcon.texture = RES.getRes(equipment.equipPic);
         var information = "";
         for (var i = 0; i < equipment.properties.length; i++) {

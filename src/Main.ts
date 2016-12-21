@@ -130,6 +130,7 @@ class Main extends egret.DisplayObjectContainer {
          var bracelet:Equipment = new Equipment("bracelet",4,3,3,4,5,"bracelet_jpg");
          var armor:Equipment = new Equipment("armor",4,4,3,4,5,"armor_jpg");
          var jewel:Jewel = new Jewel(1,2,3,2);
+         var jewel2:Jewel = new Jewel(1,5,2,3);
          //var rpgPanel：UserPanel；
          
          user.addHeroInTeam(hero);
@@ -140,24 +141,22 @@ class Main extends egret.DisplayObjectContainer {
          hero.addEquipment(bracelet);
          hero.addEquipment(armor);
          axe.addJewl(jewel);
-         helmet.addJewl(jewel);
+         helmet.addJewl(jewel2);
          bracelet.addJewl(jewel);
-         armor.addJewl(jewel);
+         armor.addJewl(jewel2);
 
          this.userPanel = new UserPanel();
          this.addChild(this.userPanel);
          this.userPanel.printfHero(hero);
          this.userPanel.x = (this.stage.width - this.userPanel.width) / 2;
          this.userPanel.y = (this.stage.height - this.userPanel.height) / 2;
-         //this.userPanel.equipPanel.printfEquip(axe);
 
-
-         /*console.log(hero.getAttack());
+         console.log(hero.getAttack());
          console.log(hero.getDefence());
          console.log(hero.getAglie());
          console.log("jewel fightpower :" + jewel.fightPower);
-         console.log("sword fightpower :" + sword.fightPower);
-         console.log("hero fightpower :" + hero.getFightPower());*/
+         console.log("helmet fightpower :" + helmet.fightPower);
+         console.log("hero fightpower :" + hero.getFightPower());
 
 
         //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
@@ -180,43 +179,6 @@ class Main extends egret.DisplayObjectContainer {
      * 描述文件加载成功，开始播放动画
      * Description file loading is successful, start to play the animation
      */
-    /*private startAnimation(result:Array<any>):void {
-        var self:any = this;
-
-        var parser = new egret.HtmlTextParser();
-        var textflowArr:Array<Array<egret.ITextElement>> = [];
-        for (var i:number = 0; i < result.length; i++) {
-            textflowArr.push(parser.parser(result[i]));
-        }
-
-        var textfield = self.textfield;
-        var count = -1;
-        var change:Function = function () {
-            count++;
-            if (count >= textflowArr.length) {
-                count = 0;
-            }
-            var lineArr = textflowArr[count];
-
-            self.changeDescription(textfield, lineArr);
-
-            var tw = egret.Tween.get(textfield);
-            tw.to({"alpha": 1}, 200);
-            tw.wait(2000);
-            tw.to({"alpha": 0}, 200);
-            tw.call(change, self);
-        };
-
-        change();
-    }*/
-
-    /**
-     * 切换描述内容
-     * Switch to described content
-     */
-    /*private changeDescription(textfield:egret.TextField, textFlow:Array<egret.ITextElement>):void {
-        textfield.textFlow = textFlow;
-    }*/
 }
 
 

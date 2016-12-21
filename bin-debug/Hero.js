@@ -96,9 +96,6 @@ var Hero = (function () {
     p.addEquipment = function (equipment) {
         this.equipments.push(equipment);
     };
-    p.addHelmet = function (equipment) {
-        this.equipments.push(equipment);
-    };
     p.getTotalExp = function () {
         this.totalExp = this.level * 20;
         return this.totalExp;
@@ -182,19 +179,22 @@ var Equipment = (function () {
     p.getAttack = function () {
         var result = 0;
         this.jewels.forEach(function (e) { return result += e.attack; });
+        result += this.level * this.quality * 3;
         this.properties[0] = new Property("攻击力", result, false);
         return result;
     };
     p.getDefence = function () {
         var result = 0;
         this.jewels.forEach(function (e) { return result += e.defence; });
+        result += this.level * this.quality * 2;
         this.properties[1] = new Property("防御力", result, false);
         return result;
     };
     p.getAglie = function () {
         var result = 0;
         this.jewels.forEach(function (e) { return result += e.agile; });
-        this.properties[2] = new Property("敏捷", result, false);
+        result += this.level * this.quality * 3;
+        this.properties[2] = new Property("敏捷度", result, false);
         return result;
     };
     d(p, "fightPower"
@@ -204,7 +204,7 @@ var Equipment = (function () {
             return result + this.level * 10 + this.quality * 10 + this.getAttack() * 5 + this.getAglie() * 3 + this.quality * 4;
         }
     );
-    p.getEquipmentInformations = function () {
+    p.getEquipInfo = function () {
         this.getAttack();
         this.getDefence();
         this.getAglie();

@@ -186,6 +186,7 @@ class Equipment{
      getAttack(){
          var result = 0;
          this.jewels.forEach(e => result += e.attack);
+         result += this.level * this.quality * 3;
          this.properties[0]=new Property("攻击力",result,false);
          return result;
      }
@@ -194,6 +195,7 @@ class Equipment{
      getDefence(){
          var result = 0;
          this.jewels.forEach(e => result += e.defence);
+         result += this.level * this.quality * 2;
          this.properties[1]=new Property("防御力",result,false);
          return result;
      }
@@ -202,7 +204,8 @@ class Equipment{
      getAglie(){
          var result = 0;
          this.jewels.forEach(e => result += e.agile);
-         this.properties[2]=new Property("敏捷",result,false);
+         result += this.level * this.quality * 3;
+         this.properties[2]=new Property("敏捷度",result,false);
          return result;
      }
 

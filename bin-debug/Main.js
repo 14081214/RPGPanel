@@ -104,29 +104,29 @@ var Main = (function (_super) {
         var bracelet = new Equipment("bracelet", 4, 3, 3, 4, 5, "bracelet_jpg");
         var armor = new Equipment("armor", 4, 4, 3, 4, 5, "armor_jpg");
         var jewel = new Jewel(1, 2, 3, 2);
+        var jewel2 = new Jewel(1, 5, 2, 3);
         //var rpgPanel：UserPanel；
         user.addHeroInTeam(hero);
         user.addHeros(hero);
-        hero.addHelmet(helmet);
         hero.addEquipment(axe);
+        hero.addEquipment(helmet);
         hero.addEquipment(bracelet);
         hero.addEquipment(armor);
         axe.addJewl(jewel);
-        helmet.addJewl(jewel);
+        helmet.addJewl(jewel2);
         bracelet.addJewl(jewel);
-        armor.addJewl(jewel);
+        armor.addJewl(jewel2);
         this.userPanel = new UserPanel();
         this.addChild(this.userPanel);
         this.userPanel.printfHero(hero);
         this.userPanel.x = (this.stage.width - this.userPanel.width) / 2;
         this.userPanel.y = (this.stage.height - this.userPanel.height) / 2;
-        //this.userPanel.equipPanel.printfEquip(axe);
-        /*console.log(hero.getAttack());
+        console.log(hero.getAttack());
         console.log(hero.getDefence());
         console.log(hero.getAglie());
         console.log("jewel fightpower :" + jewel.fightPower);
-        console.log("sword fightpower :" + sword.fightPower);
-        console.log("hero fightpower :" + hero.getFightPower());*/
+        console.log("helmet fightpower :" + helmet.fightPower);
+        console.log("hero fightpower :" + hero.getFightPower());
         //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
         // Get asynchronously a json configuration file according to name keyword. As for the property of name please refer to the configuration file of resources/resource.json.
         //RES.getResAsync("description_json", this.startAnimation, this)

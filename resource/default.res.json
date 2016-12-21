@@ -1,0 +1,55 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,Girl_png,bracelet_jpg,helmet_jpg,armor_jpg,axe_jpg,bg_room_jpg",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "Girl_png",
+			"type": "image",
+			"url": "assets/Girl.png"
+		},
+		{
+			"name": "bracelet_jpg",
+			"type": "image",
+			"url": "assets/bracelet.jpg"
+		},
+		{
+			"name": "helmet_jpg",
+			"type": "image",
+			"url": "assets/helmet.jpg"
+		},
+		{
+			"name": "armor_jpg",
+			"type": "image",
+			"url": "assets/armor.jpg"
+		},
+		{
+			"name": "axe_jpg",
+			"type": "image",
+			"url": "assets/axe.jpg"
+		},
+		{
+			"name": "bg_room_jpg",
+			"type": "image",
+			"url": "assets/bg_room.jpg"
+		}
+	]
+}
